@@ -1,0 +1,678 @@
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+
+
+/* Optional: Makes the sample page fill the window. */
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* The progress bar (scroll indicator) */
+
+.progress-bar {
+    height: 10px;
+    background: #04AA6D;
+    width: 0%;
+    position: fixed;
+    z-index: 555;
+}
+
+
+/*************************************************************************/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+nav {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    overflow: hidden;
+    background-color: #051158;
+}
+
+nav .logo {
+    margin-left: 20%;
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+}
+
+nav .logo i {
+    color: white;
+    position: absolute;
+    font-size: 1.5rem;
+}
+
+nav .logo i:last-of-type {
+    top: 6px;
+    left: -12px;
+    color: #e8c12f;
+    z-index: -1;
+}
+
+nav ul {
+    justify-content: center;
+    display: flex;
+}
+
+nav ul li {
+    padding: 15px 15px;
+    transition: all .5s ease-in-out;
+}
+
+nav ul li:hover {
+    background-color: white;
+}
+
+nav ul li:hover a {
+    color: #051158;
+}
+
+nav ul li a {
+    color: white;
+}
+
+
+/************************ weather **************************/
+
+.container {
+    background-color: #051158;
+}
+
+.weather {
+    position: relative;
+    background: url('img/Snowfall.jpg') no-repeat center;
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+}
+
+.weather>* {
+    position: relative;
+    z-index: 1;
+}
+
+.weather::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0511589f;
+}
+
+.weather .weather_info {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 50px;
+}
+
+.weather .search {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
+
+.weather .search #search_btn {
+    position: absolute;
+    right: 17%;
+    background: #426092;
+    border: none;
+    top: 31%;
+    cursor: pointer;
+    border-radius: 15px;
+    padding: 7px;
+    color: white;
+}
+
+.weather .search input {
+    width: 70%;
+    background-color: #051158;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 15px;
+}
+
+.weather .search input::placeholder {
+    color: white;
+    opacity: .8;
+}
+
+.weather .search input:focus {
+    border: none;
+    outline: none;
+}
+
+.weather .weather_info .sunny {
+    text-align: center;
+}
+
+.weather .weather_info .sunny .date {
+    text-align: left;
+    margin-top: 15px;
+    line-height: 2;
+}
+
+.weather .weather_info .sunny .date span {
+    font-weight: bold;
+}
+
+.weather .weather_info .temp_city {
+    padding: 10px;
+}
+
+.weather .weather_info .temp_city .temp {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.weather .weather_info .temp_city .city {
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.weather .weather_info .temp_city .city span {
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.weather .weather_info .temp_city table,
+.weather .weather_info .temp_city table td,
+.weather .weather_info .temp_city table th {
+    border: 2px solid #051158;
+    border-collapse: collapse;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+.weather .weather_info .temp_city table th i {
+    display: block;
+    margin: 5px auto;
+}
+
+#temp_messure {
+    border: 1px solid #ddd;
+    width: fit-content;
+    padding: 2px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-color: transparent;
+    position: relative;
+    height: 40px;
+    margin: 0 auto 15px auto;
+}
+
+#temp_messure::before {
+    position: absolute;
+    content: '';
+    height: 1px;
+    width: 4px;
+    background-color: red;
+    left: -5px;
+    box-shadow: 0px 4px red, 0 8px red, 0 12px red, 0 16px red, 0 20px red, 0 24px red, 0 28px red;
+    top: 5px;
+}
+
+#temp_messure::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle, rgba(255, 0, 0, 1) 59%, rgba(255, 255, 255, 0) -10%);
+    border: 1px solid #ddd;
+    left: -4px;
+    bottom: -15px;
+    border-top-color: transparent;
+    border-radius: 50%;
+}
+
+#temp_degree {
+    width: 5px;
+    background-color: red;
+    position: relative;
+    color: red;
+}
+
+.map {
+    background: url('img/34068.jpg') no-repeat center;
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
+}
+
+.map::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 20px;
+    background: linear-gradient( #6e7aa3 18%, #c8cdd4 110%);
+}
+
+.map .map_overlay {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    background-color: #2c02022b;
+}
+
+#map {
+    height: 300px;
+    width: 50%;
+}
+
+#map .gm-style-iw-d {
+    color: #051158;
+    font-weight: bold;
+}
+
+.map_overlay .info {
+    flex-basis: 48%;
+}
+
+.map_overlay .info .country h1 {
+    color: white;
+    text-align: center;
+    background-color: #051158;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.countries {
+    transition: .5s;
+    margin-top: 9px;
+    max-height: 200px;
+    overflow: auto;
+    display: none;
+}
+
+.countries.diplay_toggle {
+    display: block;
+    animation: display .5s ease-in-out;
+}
+
+@keyframes display {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.countries li,
+.selected li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border: 1px solid #051158;
+    margin-bottom: 5px;
+    cursor: pointer;
+    width: 215px;
+    background: azure;
+}
+
+.selected li {
+    position: relative;
+    background-color: #051158;
+    color: white;
+    font-weight: bold;
+}
+
+.selected li::after {
+    position: absolute;
+    content: '';
+    right: 0px;
+    bottom: -20px;
+    border: 10px solid transparent;
+    border-top-color: #051158;
+}
+
+.countries::-webkit-scrollbar {
+    display: none;
+}
+
+#select {
+    position: relative;
+}
+
+#country_search {
+    width: 215px;
+    position: relative;
+    top: -28px;
+    display: none;
+    z-index: -1;
+    transition: all 1s;
+    opacity: 0;
+    padding: 4px;
+    font-weight: bold;
+}
+
+#country_search:focus {
+    border-color: white;
+    outline-color: white;
+}
+
+#country_search.look {
+    top: 4px;
+    opacity: 1;
+    display: block !important;
+    z-index: 1;
+}
+
+
+/* Hide scrollbar for IE, Edge and Firefox */
+
+.countries {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+
+/**************** news section***********************/
+
+.news {
+    background: url('img/news.jpg') center no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.news .content {
+    background-color: #c8cdd4e0;
+    padding: 20px;
+}
+
+.news .content .heading {
+    text-align: center;
+}
+
+.content .heading h1 {
+    position: relative;
+    background-color: #051158;
+    color: white;
+    margin-top: 50px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 2rem;
+}
+
+.content .heading h1::after {
+    position: absolute;
+    content: '';
+    width: 15px;
+    height: 250%;
+    right: -40px;
+    top: -31px;
+    transform: rotate( 45deg);
+    background-color: rgba(255, 255, 255, 0.24);
+    transition: all .5s linear;
+}
+
+.content .heading h1:hover::after {
+    right: 200px;
+}
+
+.news .side_content {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    border-radius: 15px;
+    margin-top: 30px;
+}
+
+.news .side_content aside {
+    padding: 20px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.news .side_content aside>* {
+    margin: 10px 0;
+}
+
+.news .side_content aside input {
+    padding: 5px;
+    border: 1px solid #051158;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.news .side_content aside h3 {
+    color: #051158;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.news .side_content aside button {
+    margin: 6px auto;
+    display: flex;
+    padding: 5px 10px;
+    background: #051158;
+    color: white;
+    font-weight: bold;
+    border-radius: 11px;
+    border: 0;
+    cursor: pointer;
+}
+
+.news .side_content aside .search_head {
+    background-color: #051158;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 5px;
+    text-align: center;
+}
+
+.news_container {
+    display: grid;
+    grid-template-columns: repeat(2, 47%);
+    gap: 25px;
+    margin-left: 20px;
+    max-height: 1000px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    min-height: 1000px;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+
+/**** if not found news*/
+
+.news_container .not_found {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+
+.news_container::-webkit-scrollbar {
+    display: none;
+}
+
+.news_container .card {
+    position: relative;
+}
+
+.news_container .card .card_content {
+    padding: 20px;
+    background-color: #051158;
+    position: relative;
+    z-index: 2;
+    color: white;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.news_container .card .img_box {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    z-index: 2;
+}
+
+.news_container .card .img_box canvas {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+}
+
+.news_container .card::after,
+.news_container .card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    transition: all .5s ease-in-out;
+    border-radius: 15px;
+}
+
+.news_container .card:hover::before {
+    transform: rotate(5deg);
+}
+
+.news_container .card:hover::after {
+    transform: rotate(-5deg);
+}
+
+.news_container .card .img_box img {
+    position: absolute;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+}
+
+.news_container .card .data {
+    position: relative;
+    z-index: 2;
+    margin-top: 20px;
+}
+
+.news_container .card .data p {
+    margin-top: 15px;
+}
+
+.news_container .card .data span {
+    font-weight: bold;
+    color: red;
+}
+
+.news_container .card .data .article_link {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    transition: all .5s linear;
+    bottom: -50px;
+}
+
+.news_container .card .data .article_desc {
+    height: 100px;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.news_container .card .data .article_desc::-webkit-scrollbar {
+    display: none;
+}
+
+.news_container .card .data:hover .article_link {
+    bottom: 0px;
+}
+
+.news_container .card .data .article_link a {
+    color: red;
+}
+
+.contact .overlay {
+    padding: 30px;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/************media quires*********************/
+
+@media(max-width:767px) {
+    nav ul li {
+        padding: 13px 7px;
+    }
+    .weather .search #search_btn {
+        right: 20%;
+    }
+    .weather .weather_info {
+        flex-direction: column;
+    }
+    .map .map_overlay {
+        flex-direction: column;
+    }
+    #map {
+        width: 100%;
+    }
+    .map_overlay .info {
+        width: 100%;
+        align-self: center;
+    }
+    #country_search.look {
+        margin: 0 auto;
+    }
+    .weather .weather_info .temp_city table,
+    .weather .weather_info .temp_city table td,
+    .weather .weather_info .temp_city table th {
+        padding: 5px 5px;
+    }
+    .weather .weather_info .temp_city table td {
+        font-size: 12px;
+    }
+    .countries,
+    .selected {
+        margin-bottom: 20px;
+    }
+    .countries li,
+    .selected li {
+        margin: 0 auto;
+    }
+}

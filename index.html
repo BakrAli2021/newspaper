@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--fontawesome -->
+    <link rel="stylesheet" type="text/css" href="https://kit-pro.fontawesome.com/releases/v5.13.0/css/pro.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="progress-bar" id="myBar"></div>
+    <nav>
+        <div class="logo">
+            <i class="fas fa-cloud"></i>
+            <i class="fas fa-sun"></i>
+        </div>
+        <ul>
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">News</a>
+            </li>
+
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- *************** weather section ******************-->
+
+        <div class="weather">
+
+            <div class="search">
+                <input type="text" id="search_input" autocomplete="off" placeholder="Please Enter City Name">
+                <button id="search_btn">Search</button>
+            </div>
+            <div class="weather_info">
+                <div class="sunny">
+                    <img class="weather_img" src="" alt="">
+                    <p class="weather_desc"></p>
+                    <div class="date"></div>
+                </div>
+                <div class="temp_city">
+                    <p class="temp"></p>
+                    <p class="city"></p>
+                    <table>
+                        <tr>
+                            <th><span>Tepmrature</span> <i class="fas fa-temperature-high"></i></th>
+                            <th><span>Wind speed</span> <i class="fas fa-wind"></i></th>
+                            <th><span>Wind Direction</span> <i class="fas fa-directions"></i></th>
+                            <th><span>Pressure</span> <i class="fas fa-globe-africa"></i></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="temp_messure">
+                                    <div id="temp_degree"></div>
+                                </div>
+                            </td>
+                            <td id="wind_speed"></td>
+                            <td id="wind_dir"></td>
+                            <td id="pressure"></td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="map">
+        <div class="map_overlay">
+            <div class="info">
+                <div class="country">
+                    <h1>choose Country</h1>
+                    <div id="select">
+                        <ul class="selected">
+                            <li></li>
+                        </ul>
+                        <input type="text" id="country_search" placeholder="Search">
+                    </div>
+                    <ul class=countries></ul>
+                </div>
+            </div>
+
+            <div id="map"></div>
+        </div>
+    </div>
+    <!-- *************** weather section ******************-->
+
+    <!------------------------news section---------------->
+    <section class="news">
+        <div class="content">
+            <div class="heading">
+                <h1>Global New</h1>
+            </div>
+
+            <div class="side_content">
+                <aside>
+                    <h2 class="search_head">Search News</h2>
+
+                    <label for="news_serach"></label>
+                    <input id="news_serach" type="text" name="news_serach" placeholder="Write Your Subject">
+                    <label for="search_date">Search From</label>
+                    <input type="date" name="search_date" id="search_date">
+                    <button id="search_button" type="button"> Search</button>
+                    <h3 id="headlines">HeadLines</h3>
+                    <h3 id="everthing">Everything</h3>
+
+
+                </aside>
+                <div class="news_container">
+
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!----------- contact form --------->
+    <section class="contact">
+        <div class="overlay">
+            <form>
+                <h1>get in toutch</h1>
+                <input type="email" id='from_name' placeholder="write Your Email">
+                <textarea name="" id="message" cols="30" rows="10" placeholder="message"></textarea>
+                <button class="send" type="button">send</button>
+
+            </form>
+        </div>
+    </section>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/gsap.min.js"></script>
+    <script src="hover-effect.umd.js"></script>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7pnNF4HrTTe4aUpnLopUCpVLSrir5Kwk&callback=initMap&v=weekly" async></script> -->
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js.js"></script>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAF0KuxZomY6jF59yOEw-6udqIgtQb8hRY&callback=initMap&v=weekly" async></script>
+</body>
+
+</html>
