@@ -91,7 +91,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 function weather(city) {
     fetch('https://api.weatherapi.com/v1/current.json?key=35c78f9358394e30b3d62303210912&q=' + city + '&aqi=yes').then((r) => r.json()).then((data) => {
-        console.log(data);
+        //console.log(data);
         document.querySelector('.weather_info .sunny .weather_desc').textContent = data.current.condition.text;
 
         document.querySelector('.weather_info .sunny .weather_img').src = data.current.condition.icon;
@@ -151,13 +151,13 @@ fetch('https://api.ipgeolocation.io/ipgeo?apiKey=60fb48899cec40a3aa2c25a87e76090
             card.style.display = "flex";
         }
     }).catch((er) => {
-        console.log(er);
+       // console.log(er);
         card.innerHTML = `<img class='not_found' src="img/not_found2.jpg" alt="" srcset="">`;
         card.style.display = "flex";
     });
 
 }).catch((error) => {
-    console.log(error + 'can not fetch data');
+   // console.log(error + 'can not fetch data');
 });
 
 ///////////////////////////////// get data by search button
