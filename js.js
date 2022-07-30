@@ -348,7 +348,7 @@ function myFunction() {
     var scrolled = (winScroll / height) * 100;
     document.getElementById("myBar").style.width = scrolled + "%";
 }
-
+/*
 /////////////// contact dorm to send email
 (function() {
     emailjs.init("user_tYxkxc9IRlX2KFDgLdHgW");
@@ -367,4 +367,4 @@ function send() {
         console.log(error)
     })
 }
-document.querySelector('.send').addEventListener('click', send);
+document.querySelector('.send').addEventListener('click', send);*/
